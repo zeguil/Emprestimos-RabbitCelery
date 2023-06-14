@@ -1,8 +1,9 @@
-
+import os
 from pathlib import Path
 from corsheaders.middleware import CorsMiddleware
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -14,7 +15,12 @@ SECRET_KEY = 'django-insecure-#h_aha1+fl&qy2nws2mo_p()jfmmik$#27abws!^748k6mre7t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    "http://localhost",
+    "http://127.0.0.1"
+]
 
 
 # Application definition
@@ -48,9 +54,11 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8080',
+    'http://localhost',
+    'http://127.0.0.1',
     'http://localhost:3000',
     'http://localhost:8000',
+    'http://localhost:8080',
 ]
 
 ROOT_URLCONF = 'propostas_emprestimo.urls'
@@ -119,7 +127,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

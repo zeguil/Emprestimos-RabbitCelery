@@ -4,9 +4,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000 --settings=propostas_emprestimo.settings
     ports:
       - "8000:8000"
+    volumes:
+      - ./static:/app/static
     depends_on:
       - rabbitmq
       - celery-worker
