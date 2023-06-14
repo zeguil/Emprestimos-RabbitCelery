@@ -1,2 +1,2 @@
 # Desafio-DigitalSysTec
-Desafio proposta pela empresa DigitalSys Tecnologia
+Desafio proposto pela empresa DigitalSys Tecnologia

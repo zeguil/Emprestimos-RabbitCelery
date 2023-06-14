@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'propostas'
     #3TH PARTY
     'corsheaders',
+    'rest_framework',
     'django_celery_results',
     'django_celery_beat',
 ]
