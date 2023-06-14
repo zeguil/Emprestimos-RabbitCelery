@@ -27,12 +27,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #MY APPS
-    'propostas'
+    'propostas',
     #3TH PARTY
     'corsheaders',
     'rest_framework',
     'django_celery_results',
-    'django_celery_beat',
+    
 ]
 
 MIDDLEWARE = [
