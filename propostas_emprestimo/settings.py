@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-#h_aha1+fl&qy2nws2mo_p()jfmmik$#27abws!^748k6mre7t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -49,6 +49,8 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:8080',
+    'http://localhost:3000',
+    'http://localhost:8000',
 ]
 
 ROOT_URLCONF = 'propostas_emprestimo.urls'

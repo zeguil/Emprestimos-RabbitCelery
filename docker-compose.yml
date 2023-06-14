@@ -1,0 +1,24 @@
+version: "3"
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - rabbitmq
+      - celery-worker
+  rabbitmq:
+    image: rabbitmq:3
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+  celery-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: celery -A propostas_emprestimo worker --loglevel=info
+    depends_on:
+      - rabbitmq
