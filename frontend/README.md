@@ -1,4 +1,4 @@
-# emprestimo_frontend
+# frontend
 
 ## Project setup
 ```
