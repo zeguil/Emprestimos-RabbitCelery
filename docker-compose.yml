@@ -2,9 +2,10 @@ version: "3"
 services:
   backend:
     build:
-      context: .
+      container_name: backend
+      context: ./backend
       dockerfile: Dockerfile
-    command: python manage.py runserver 0.0.0.0:8000 --settings=propostas_emprestimo.settings
+    command:  sh -c "sleep 15 && python manage.py runserver 0.0.0.0:8000 --settings=propostas_emprestimo.settings"
     ports:
       - "8000:8000"
     volumes:
@@ -13,14 +14,29 @@ services:
       - rabbitmq
       - celery-worker
   rabbitmq:
+    container_name: rabbitmq
     image: rabbitmq:3
     ports:
       - "5672:5672"
       - "15672:15672"
   celery-worker:
     build:
-      context: .
+      container_name: worker
+      context: ./backend
       dockerfile: Dockerfile
     command: celery -A propostas_emprestimo worker --loglevel=info
     depends_on:
       - rabbitmq
+
+  frontend:
+    build:
+      container_name: frontend
+      context: ./frontend
+      dockerfile: Dockerfile
+    command: npm run serve
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./frontend:/app/frontend
+    depends_on:
+      - backend

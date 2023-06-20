@@ -80,13 +80,15 @@ export default {
       };
 
       axios
-        .post("http://backend:8000/propostas", formData)
-        .then((response) => {
-          const id = response.data.id;
-          this.$router.push({ name: "Confirm", params: { id } });
+        .post("http://localhost:8000/propostas", formData,
+        )
+        .then(() => {
+          
+          this.$router.push({ name: "Confirm"});
         })
         .catch((error) => {
           console.error("Erro ao enviar o formulário:", error);
+          this.$router.push({ name: "Confirm"});
         });
     },
   },
