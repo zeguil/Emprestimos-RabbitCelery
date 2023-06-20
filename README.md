@@ -1,6 +1,10 @@
 # Desafio DigitalSysTec
 
-Este é o repositório da Desafio DigitalSysTec, que consiste em um projeto Django com frontend em Vue.js e utiliza RabbitMQ e Celery para processamento assíncrono. O projeto também utiliza o banco de dados PostgreSQL.
+O Desafio DigitalSysTec é um projeto web que gerencia propostas de empréstimos. Ele consiste em um backend desenvolvido com Django e Django Rest Framework, um frontend desenvolvido com Vue.js.
+
+A biblioteca RabbitMQ é utilizada como um sistema de mensageria para o processamento assíncrono das propostas de empréstimo, quando uma nova proposta de empréstimo é cadastrada, ela é enviada para uma fila de processamento no RabbitMQ. O Celery, uma biblioteca de tarefas distribuídas, é responsável por consumir as mensagens da fila e realizar o processamento assíncrono das propostas. O resultado do processamento de uma proposta de empréstimo pode alterar o seu status. Após o processamento, o status da proposta é atualizado e refletido na interface do usuário.
+
+Através da integração de diferentes tecnologias e o uso de processamento assíncrono, o projeto proporciona uma experiência de usuário ágil, com atualizações em tempo real e um desempenho otimizado.
 
 ## Requisitos
 
@@ -49,3 +53,7 @@ O projeto é organizado da seguinte maneira:
 # Observações
 - Certifique-se de ter as portas 8000 e 8080 disponíveis em sua máquina para evitar conflitos com outros serviços em execução.
 - O banco de dados PostgreSQL está sendo utilizado como o banco de dados padrão para o projeto. Certifique-se de que o ambiente Docker esteja em execução para que o banco de dados seja acessível para a aplicação Django.
+
+## Créditos
+
+- Desenvolvido por [José Guilherme Lins](https://github.com/zeguil)
