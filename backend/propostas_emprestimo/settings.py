@@ -15,9 +15,21 @@ SECRET_KEY = 'django-insecure-#h_aha1+fl&qy2nws2mo_p()jfmmik$#27abws!^748k6mre7t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = "[*]"
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    "http://localhost",
+    "http://127.0.0.1"
+]
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost',
+    'http://127.0.0.1',
+    'http://localhost:3000',
+    'http://localhost:8000',
+    'http://localhost:8080',
+]
+
 
 # Application definition
 
@@ -40,14 +52,17 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'corsheaders.middleware.CorsMiddleware',  # Middleware do CorsHeaders
+    # Cors Headers
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 ROOT_URLCONF = 'propostas_emprestimo.urls'

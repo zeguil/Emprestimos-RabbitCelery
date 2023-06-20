@@ -6,11 +6,12 @@ from .tasks import process_proposta
 
 class PropostaViewSet(viewsets.ModelViewSet):
     queryset = Proposta.objects.all()
+    serializer_class = PropostaRetrieveSerializer
 
     def get_serializer_class(self):
         if self.action == 'create':
             return PropostaCreateSerializer
-        return PropostaRetrieveSerializer
+        return super().get_serializer_class()
 
     def perform_create(self, serializer):
         proposta = serializer.save()
@@ -18,7 +19,7 @@ class PropostaViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
-        if serializer.is_valid():
-            self.perform_create(serializer)
-            return Response(serializer.data, status=201)
-        return Response(serializer.errors, status=400)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=201, headers=headers)
