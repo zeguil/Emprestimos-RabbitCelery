@@ -80,7 +80,7 @@ export default {
       };
 
       try {
-        await axios.post("http://localhost:8000/propostas", formData);
+        await axios.post("http://localhost:8000/propostas/", formData);
         this.$router.push({ name: "Confirm" });
       } catch (error) {
         console.error("Erro ao enviar o formulário:", error);
