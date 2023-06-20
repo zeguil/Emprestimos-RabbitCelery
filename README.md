@@ -18,11 +18,10 @@ Certifique-se de ter os seguintes requisitos instalados em sua máquina:
 Siga as etapas abaixo para executar o projeto localmente:
 
 1. Clone o repositório:
-
-   shell
+   ```shell
    git clone https://github.com/zeguil/Desafio-DigitalSysTec.git
 2. Navegue até o diretório do projeto:
-    shell
+    ```shell
     cd Desafio-DigitalSysTec
 3. Inicie o ambiente Docker:
     ```shell
