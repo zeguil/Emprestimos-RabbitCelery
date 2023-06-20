@@ -2,7 +2,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from .serializers import PropostaCreateSerializer, PropostaRetrieveSerializer
 from .models import Proposta
-from .tasks import processar_proposta
+from .tasks import process_proposta
 
 class PropostaViewSet(viewsets.ModelViewSet):
     queryset = Proposta.objects.all()
@@ -15,7 +15,7 @@ class PropostaViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         proposta = serializer.save()
-        processar_proposta.delay(proposta.id)
+        process_proposta.delay(proposta.id)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)

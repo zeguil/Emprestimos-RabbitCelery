@@ -63,30 +63,33 @@ import axios from "axios";
 
 export default {
   data() {
-  return {
-    nomeCompleto: "",
-    cpf: "",
-    endereco: "",
-    valorEmprestimo: "",
-  };
-},
-methods: {
-  async enviarFormulario() {
-    const formData = {
-      nome_completo: this.nomeCompleto,
-      cpf: this.cpf.replace(/\D/g, ""),
-      endereco: this.endereco,
-      valor_emprestimo: this.valorEmprestimo.replace(",", "."),
+    return {
+      nomeCompleto: "",
+      cpf: "",
+      endereco: "",
+      valorEmprestimo: "",
     };
-
-    try {
-      await axios.post("http://localhost:8000/propostas/", formData, {});
-      this.$router.push({ name: "Confirm" });
-    } catch (error) {
-      console.error("Erro ao enviar o formulário:", error);
-    }
   },
-},
+  methods: {
+    enviarFormulario() {
+      const formData = {
+        nome_completo: this.nomeCompleto,
+        cpf: this.cpf.replace(/\D/g, ""),
+        endereco: this.endereco,
+        valor_emprestimo: this.valorEmprestimo.replace(",", "."),
+      };
+
+      axios
+        .post("http://backend:8000/propostas", formData)
+        .then((response) => {
+          const id = response.data.id;
+          this.$router.push({ name: "Confirm", params: { id } });
+        })
+        .catch((error) => {
+          console.error("Erro ao enviar o formulário:", error);
+        });
+    },
+  },
   mounted() {
     const cpfInput = document.getElementById("cpf");
     const nomeCompletoInput = document.getElementById("nomeCompleto");
