@@ -71,7 +71,7 @@ export default {
     };
   },
   methods: {
-    enviarFormulario() {
+    async enviarFormulario() {
       const formData = {
         nome_completo: this.nomeCompleto,
         cpf: this.cpf.replace(/\D/g, ""),
@@ -79,17 +79,13 @@ export default {
         valor_emprestimo: this.valorEmprestimo.replace(",", "."),
       };
 
-      axios
-        .post("http://localhost:8000/propostas", formData,
-        )
-        .then(() => {
-          
-          this.$router.push({ name: "Confirm"});
-        })
-        .catch((error) => {
-          console.error("Erro ao enviar o formulário:", error);
-          this.$router.push({ name: "Confirm"});
-        });
+      try {
+        await axios.post("http://localhost:8000/propostas", formData);
+        this.$router.push({ name: "Confirm" });
+      } catch (error) {
+        console.error("Erro ao enviar o formulário:", error);
+        this.$router.push({ name: "Confirm" });
+      }
     },
   },
   mounted() {

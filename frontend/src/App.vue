@@ -10,7 +10,5 @@
   };
   </script>
   
-  <style>
-  /* Estilos do componente */
-  </style>
+  <style></style>
   
