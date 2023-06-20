@@ -26,7 +26,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     container_name: backend
-    command: sh -c "sleep 5 && python manage.py migrate && python manage.py shell -c \"from django.contrib.auth import get_user_model; User = get_user_model(); exists = User.objects.filter(username='admin').exists(); User.objects.create_superuser('admin', 'admin@example.com', 'psswrd123') if not exists else None\" && python manage.py runserver 0.0.0.0:8000 --settings=propostas_emprestimo.settings"
+    command: sh -c "sleep 10 && python manage.py migrate && python manage.py shell -c \"from django.contrib.auth import get_user_model; User = get_user_model(); exists = User.objects.filter(username='admin').exists(); User.objects.create_superuser('admin', 'admin@example.com', 'psswrd123') if not exists else None\" && python manage.py runserver 0.0.0.0:8000 --settings=propostas_emprestimo.settings"
     ports:
       - "8000:8000"
     volumes:
