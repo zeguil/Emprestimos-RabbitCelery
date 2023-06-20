@@ -1,12 +1,13 @@
 from celery import shared_task
 from .models import Proposta
 
+def aprovar_proposta(proposta):
+    return proposta.id % 2 == 0 
 
 @shared_task
-def process_proposta(proposta_id):
+def processar_proposta(proposta_id):
     proposta = Proposta.objects.get(id=proposta_id)
-    
-    if proposta.id % 2 == 0:
+    if aprovar_proposta(proposta):
         proposta.status = 'Aprovada'
     else:
         proposta.status = 'Negada'
