@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar">
       <div class="navbar-logo">
-        <img src="./icon.png" alt="Logo da Empresa" />
+        <img src="../assets/images/icon.png" alt="Logo da Empresa" />
         <h1 class="company-name">SIMPLE BANK</h1>
       </div>
     </nav>
@@ -14,7 +14,7 @@
             Parabéns! Sua proposta foi enviada com sucesso. Agora, nossa equipe
             de especialistas irá analisá-la cuidadosamente. Agradecemos sua
             paciência enquanto avaliamos todas as informações fornecidas.
-            <br /><br>
+            <br /><br />
 
             Fique tranquilo(a), faremos o possível para agilizar o processo de
             análise. Você pode esperar uma resposta definitiva em até 48 horas.
@@ -79,7 +79,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Definir a altura como 100vh */
+  height: 100vh;
   margin-top: -100px;
   width: 100%;
   max-width: 600px;

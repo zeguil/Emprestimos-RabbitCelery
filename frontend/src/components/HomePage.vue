@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar">
       <div class="navbar-logo">
-        <img src="./icon.png" alt="Logo da Empresa" />
+        <img src="../assets/images/icon.png" alt="Logo da Empresa" />
         <h1 class="company-name">SIMPLE BANK</h1>
       </div>
       <ul class="navbar-links">
@@ -69,7 +69,6 @@ body {
 
 .navbar:hover {
   transform: scale(1);
-  /* Mantém o tamanho ao passar o mouse */
 }
 
 .navbar-logo {
@@ -83,12 +82,10 @@ body {
   margin-right: 10px;
   filter: brightness(120%);
   transition: filter 0.3s;
-  /* Adiciona transição ao filtro */
 }
 
 .navbar-logo:hover img {
   filter: brightness(150%);
-  /* Aumenta o brilho ao passar o mouse */
 }
 
 .company-name {
@@ -122,15 +119,13 @@ body {
   color: white;
   text-decoration: none;
   transition: transform 0.3s;
-  /* Adiciona transição ao tamanho */
 }
 
 .navbar-links li a:hover {
-  font-size: 16.5px;
+  font-size: 16.1px;
   transform: scale(1.1);
-  /* Aumenta o tamanho ao passar o mouse */
+
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  /* Adiciona sombra ao passar o mouse */
 }
 
 .background-image {
@@ -145,13 +140,13 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background-image: url("bank3.jpg");
+  background-image: url("../assets/images/bank.jpg");
   width: 100%;
   height: 170%;
   background-size: cover;
   background-position: center;
   filter: brightness(30%);
-  /* Ajuste os valores para alterar o brilho e o desfoque */
+
   z-index: -1;
   border: none;
   outline: none;
