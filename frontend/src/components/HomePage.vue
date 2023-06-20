@@ -35,7 +35,6 @@
 export default {
   methods: {
     redirectToFormPage() {
-      // Redirecionar para a página "FormPage"
       this.$router.push("/form");
     },
   },

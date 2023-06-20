@@ -1,4 +1,6 @@
 /env
+/venv
 /node_modules
 backend/env
+backend/venv
 frontend/node_modules
