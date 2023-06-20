@@ -1,6 +1,6 @@
 # Desafio DigitalSysTec
 
-Este é o repositório da Desafio DigitalSysTec, que consiste em um projeto Django com frontend em Vue.js e utiliza RabbitMQ e Celery para processamento assíncrono.
+Este é o repositório da Desafio DigitalSysTec, que consiste em um projeto Django com frontend em Vue.js e utiliza RabbitMQ e Celery para processamento assíncrono. O projeto também utiliza o banco de dados PostgreSQL.
 
 ## Requisitos
 
@@ -44,7 +44,8 @@ O projeto é organizado da seguinte maneira:
 
 - O código do backend Django está localizado na pasta backend.
 - O código do frontend Vue.js está localizado na pasta frontend.
-- O arquivo docker-compose.yml define a configuração do ambiente Docker, incluindo os serviços do backend, frontend, RabbitMQ e Celery.
+- O arquivo docker-compose.yml define a configuração do ambiente Docker, incluindo os serviços do backend, frontend, RabbitMQ, Celery e o banco de dados PostgreSQL.
 
 # Observações
 - Certifique-se de ter as portas 8000 e 8080 disponíveis em sua máquina para evitar conflitos com outros serviços em execução.
+- O banco de dados PostgreSQL está sendo utilizado como o banco de dados padrão para o projeto. Certifique-se de que o ambiente Docker esteja em execução para que o banco de dados seja acessível para a aplicação Django.

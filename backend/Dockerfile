@@ -6,6 +6,8 @@ COPY . /app
 
 RUN pip install -r requirements.txt
 
+RUN python manage.py makemigrations
+
 ENV DJANGO_SETTINGS_MODULE=propostas_emprestimo.settings
 
-CMD python manage.py collectstatic --no-input && python manage.py runserver 0.0.0.0:8000
+CMD python manage.py collectstatic --no-input

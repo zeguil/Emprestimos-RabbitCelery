@@ -17,7 +17,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     container_name: worker
-    command: celery -A propostas_emprestimo worker --loglevel=info
+    command: sh -c "sleep 10 && celery -A propostas_emprestimo worker --loglevel=info"
     depends_on:
       - rabbitmq
 
@@ -26,13 +26,32 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     container_name: backend
-    command: sh -c "sleep 15 && python manage.py runserver 0.0.0.0:8000 --settings=propostas_emprestimo.settings"
+    command: sh -c "sleep 5 && python manage.py migrate && python manage.py shell -c \"from django.contrib.auth import get_user_model; User = get_user_model(); exists = User.objects.filter(username='admin').exists(); User.objects.create_superuser('admin', 'admin@example.com', 'psswrd123') if not exists else None\" && python manage.py runserver 0.0.0.0:8000 --settings=propostas_emprestimo.settings"
     ports:
       - "8000:8000"
     volumes:
       - ./static:/app/static
     depends_on:
       - celery-worker
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=propostas_db
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+
+  db:
+    container_name: db
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=propostas_db
 
   frontend:
     build:
@@ -46,3 +65,6 @@ services:
       - ./frontend:/app/frontend
     depends_on:
       - backend
+
+volumes:
+  postgres_data:
