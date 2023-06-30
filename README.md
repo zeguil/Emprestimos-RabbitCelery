@@ -1,6 +1,6 @@
-# Desafio DigitalSysTec
+# Emprestimos Bancários
 
-O Desafio DigitalSysTec é um projeto web que gerencia propostas de empréstimos. Ele consiste em um backend desenvolvido com Django e Django Rest Framework, um frontend desenvolvido com Vue.js.
+Esse é um projeto web que gerencia propostas de empréstimos. Ele consiste em um backend desenvolvido com Django e Django Rest Framework, um frontend desenvolvido com Vue.js.
 
 A biblioteca RabbitMQ é utilizada como um sistema de mensageria para o processamento assíncrono das propostas de empréstimo, quando uma nova proposta de empréstimo é cadastrada, ela é enviada para uma fila de processamento no RabbitMQ. O Celery, uma biblioteca de tarefas distribuídas, é responsável por consumir as mensagens da fila e realizar o processamento assíncrono das propostas. O resultado do processamento de uma proposta de empréstimo pode alterar o seu status. Após o processamento, o status da proposta é atualizado e refletido na interface do usuário.
 
